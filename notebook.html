@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Markdown Editer</title>
+    <script src="vue.js"></script>
+    <style>
+        body{
+            border: 1px solid pink;
+        }
+    .notebook,.input,.preview{
+        float: left;
+        height: 888px;
+    }
+    .notebook{
+        background-color: pink;
+        width: 20%;
+        /* position: absolute; */
+        /* left: 0%; */
+        /* top: 0%; */
+    }
+    .input{
+        background-color: aqua;
+        width: 40%;
+        /* position: absolute; */
+        /* left: 20%; */
+        /* top: 0%; */
+    }
+    .preview{
+        background-color: aquamarine;
+        width: 40%;
+        /* position: absolute; */
+        /* left: 60%; */
+        /* top: 0%; */
+    }
+    </style>
+</head>
+<body>
+    <div id="app">
+    <div class="notebook">notebook</div>
+    <div class="input">input</div>
+    <div class="preview">preview</div>
+    </div>
+    <script>
+    var vm=new Vue({
+        el:'#app'
+    })
+    </script>
+</body>
+</html>
