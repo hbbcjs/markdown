@@ -65,6 +65,11 @@
         el:'#notebook',
         data:{
             content:'text'
+        },
+        computed:{
+            markdownPreview(){
+                return marked(this.content)
+            }
         }
     })
     </script>
