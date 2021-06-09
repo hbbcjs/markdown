@@ -72,10 +72,9 @@
             </div>
         <textarea v-model="selecteNote.content"></textarea>
     </div>
-    <!-- <div class="preview">
-        {{preview}}
-    </div> -->
-    
+    <div class="preview" v-html="markdownPreview">
+    </div>
+    </template>
 </div>
     <script>
         // const html=marked('# hello')
