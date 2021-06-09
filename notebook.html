@@ -43,18 +43,34 @@
         /* left: 60%; */
         /* top: 0%; */
     }
+    button,.note.selected{
+        background: #40b883;
+        height: 30px;
+    }
+    .note{
+        height: 30px;
+        margin-top: 1px;
+        background-color: aqua;
+        border: 0.5px solid white;
+        text-align: center;
+    }
     </style>
 </head>
 <body>
     <div id="notebook">
     <div class="notebook">
         <button v-bind:title="notes.length" v-on:click="addNote">Add Note</button>
-        <div v-for="note in notes">
+        <div class="note" v-for="note in notes" @click="selecteNote(note)" :class="{selected: note===selecteNote">
             {{note.title}}
         </div>
     </div>
-    <div class="input">
-        <textarea v-model="content"></textarea>
+    <template v-if="selecteNote">
+        <div class="input">
+            <div class="toolbar">
+                <input v-model="selecteNote.title" placeholder="Note title">
+                <button @click="removeNote">delete</button>
+            </div>
+        <textarea v-model="selecteNote.content"></textarea>
     </div>
     <!-- <div class="preview">
         {{preview}}
