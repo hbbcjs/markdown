@@ -84,13 +84,13 @@
     var vm=new Vue({
         el:'#notebook',
         data:{
-            content:'',
-            notes:[],
+            notes: JSON.parse(localStorage.getItem('notes')) ||[],
+            selectedId: localStorage.getItem('selected-id') ||null,
         },
         computed:{
             markdownPreview(){
-                return marked(this.content)
-            }
+                return this.selectedNote ? markded(this.selectedNote.content) :''
+            },
         },
         watch:{
             content(val,oldval){
