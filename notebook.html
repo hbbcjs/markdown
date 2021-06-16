@@ -91,15 +91,21 @@
             markdownPreview(){
                 return this.selectedNote ? markded(this.selectedNote.content) :''
             },
-        },
-        watch:{
-            content(val,oldval){
-                console.log("new:",val,"old:",oldval)
-                localStorage.setItem('content',val)
+            selecteNote(){
+                return this.notes.find(note=>note.id === this.selectedId)
             }
         },
+        watch:{
+                notes:{
+                    handler:'saveNotes',
+                    deep:true,
+                },
+                selectedId(val){
+                    localStorage.setItem('selected-id',val)
+                }
+        },
         created(){
-            this.content=localStorage.setItem('content')||"you can write in **markdown**"
+            //this.content=localStorage.setItem('content')||"you can write in **markdown**"
         },
         methods:{
             addNote(){
@@ -114,7 +120,17 @@
                     favorite:false,
                 }
                 this.notes.push(note)
-            }
+            },
+            removeNote(){
+                console.log("remove note!")
+                if(this.selecteNote && confirm('Delete the note?')){
+                    const index =this.notes.indexOf(this.selecteNote)
+                    if(index !== -1) {
+                        this.notes.splice(index,1)
+                    }
+                }
+            },
+            
         }
     })
     </script>
